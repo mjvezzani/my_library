@@ -1,1 +1,8 @@
 <h1>Dashboard</h1>
+
+<% @books.each do |book| %>
+  <div class='panel'>
+    <h3><%= book.title %></h3>
+    <p><%= book.author %></p>
+  </div>
+<% end %>
