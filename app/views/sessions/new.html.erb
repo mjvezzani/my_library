@@ -1,0 +1,16 @@
+<div class='large-4 large-offset-4 columns'>
+  <h2>Sign in</h2>
+  <hr/>
+
+  <%= form_tag '/login' do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+    <hr/>
+    <br/>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <hr>
+    <br/>
+    <%= submit_tag 'Take me to my library', class: 'button' %>
+  <% end %>
+</div>
