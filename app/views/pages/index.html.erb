@@ -1,11 +1,22 @@
 <h1>Dashboard</h1>
 
-<% @books.each do |book| %>
-  <div class='panel'>
-    <h3><%= book.title %></h3>
-    <p><%= book.author %></p>
-    <% if book.checked_out? %>
-      <span class='label radius warning'>This book is checked out to <%= book.checked_out_book.friend.full_name %>.</span>
-    <% end %>
-  </div>
-<% end %>
+<div class='large-8 columns'>
+  <h3>Lent Out Books</h3>
+  <% @cobs.each do |cob| %>
+    <div class='panel'>
+      <h3><%= cob.title %></h3>
+      <p><%= cob.author %></p>
+      <span class='label radius warning'>This book is checked out to <%= cob.checked_out_book.friend.full_name %>.</span>
+    </div>
+  <% end %>
+</div>
+
+<div class='large-4 columns'>
+  <h3>Samplings From Your Library</h3>
+  <% @books.each do |book| %>
+    <div class='panel'>
+      <h3><%= book.title %></h3>
+      <p><%= book.author %></p>
+    </div>
+  <% end %>
+</div>
