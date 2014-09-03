@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#index', as: 'dashboard'
 
   resources :users
+  resources :books
+  resources :friends
 
 end

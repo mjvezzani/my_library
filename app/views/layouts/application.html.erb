@@ -13,7 +13,7 @@
 
   <body class='row'>
     <% if logged_in? %>
-      <%= link_to "Log Out, #{current_user.username}", logout_path %>
+      <%= render 'layouts/navigation' %>
     <% end %>
     <%= render 'shared/messages' %>
 
