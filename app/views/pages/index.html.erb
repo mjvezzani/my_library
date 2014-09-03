@@ -6,7 +6,9 @@
     <div class='panel'>
       <h3><%= cob.title %></h3>
       <p><%= cob.author %></p>
-      <span class='label radius warning'>This book is checked out to <%= cob.checked_out_book.friend.full_name %>.</span>
+      <%= link_to friend_path(cob.checked_out_book.friend) do %>
+        <span class='label radius warning'>This book is checked out to <%= cob.checked_out_book.friend.full_name %>.</span>
+      <% end %>
     </div>
   <% end %>
 </div>
