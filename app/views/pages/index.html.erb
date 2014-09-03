@@ -4,7 +4,7 @@
   <h3>Lent Out Books</h3>
   <% @cobs.each do |cob| %>
     <div class='panel'>
-      <h3><%= cob.title %></h3>
+      <h3><%= link_to cob.title, book_path(cob) %></h3>
       <p><%= cob.author %></p>
       <%= link_to friend_path(cob.checked_out_book.friend) do %>
         <span class='label radius warning'>This book is checked out to <%= cob.checked_out_book.friend.full_name %>.</span>
@@ -17,7 +17,7 @@
   <h3>Samplings From Your Library</h3>
   <% @books.each do |book| %>
     <div class='panel'>
-      <h3><%= book.title %></h3>
+      <h3><%= link_to book.title, book_path(book) %></h3>
       <p><%= book.author %></p>
     </div>
   <% end %>

@@ -1,0 +1,10 @@
+<h2>Your Library</h2>
+
+<div class='large-8 large-offset-2 columns'>
+  <% @books.each do |book| %>
+    <div class='panel'>
+      <h4><%= link_to book.title, book_path(book) %></h4>
+      <p><%= book.author %></p>
+    </div>
+  <% end %>
+</div>
