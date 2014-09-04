@@ -2,12 +2,12 @@
 
 <div class='large-8 columns'>
   <h3>Lent Out Books</h3>
-  <% @cobs.each do |cob| %>
+  <% @lobs.each do |book| %>
     <div class='panel'>
-      <h3><%= link_to cob.title, book_path(cob) %></h3>
-      <p><%= cob.author %></p>
-      <%= link_to friend_path(cob.checked_out_book.friend) do %>
-        <span class='label radius warning'>This book is checked out to <%= cob.checked_out_book.friend.full_name %>.</span>
+      <h4><%= link_to book.title, book_path(book) %></h4>
+      <p><%= book.author %></p>
+      <%= link_to book_path(book) do %>
+        <span class='label radius warning'>This book is checked out to <%= book.friend.full_name %>.</span>
       <% end %>
     </div>
   <% end %>

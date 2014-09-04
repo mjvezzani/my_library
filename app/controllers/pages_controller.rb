@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def index
     @books = Book.all    
-    @cobs = Book.where(checked_out: true)
+    @lobs = Book.where(checked_out: true)
   end
 
 end

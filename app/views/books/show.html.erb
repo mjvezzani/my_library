@@ -6,9 +6,12 @@
 </div>
 
 <div class='panel'>
-  <%= form_for @cob do |f| %>
-    <%= f.collection_select(:id, Friend.all, :id, :full_name) %>
+  <%= form_for @book do |f| %>
+    <%= f.collection_select(:friend_id, Friend.all, :id, :full_name) %>
     <br/>
-    <%= f.submit %>
+    <%= f.label :checked_out %>
+    <%= f.check_box :checked_out, {}, "true", "false" %>
+    <br/>
+    <%= f.submit 'Lend out book', class: 'button' %>
   <% end %>
 </div>

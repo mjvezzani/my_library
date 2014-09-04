@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903122114) do
+ActiveRecord::Schema.define(version: 20140904225541) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -21,23 +21,17 @@ ActiveRecord::Schema.define(version: 20140903122114) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "checked_out"
-  end
-
-  create_table "checked_out_books", force: true do |t|
     t.integer  "friend_id"
-    t.integer  "book_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "friends", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
-    t.integer  "phone"
+    t.string   "phone"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
