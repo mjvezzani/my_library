@@ -4,3 +4,11 @@
   <p>Author: <%= @book.author %></p>
   <p>ISBN: <%= @book.isbn %></p>
 </div>
+
+<div class='panel'>
+  <%= form_for @cob do |f| %>
+    <%= f.collection_select(:id, Friend.all, :id, :full_name) %>
+    <br/>
+    <%= f.submit %>
+  <% end %>
+</div>

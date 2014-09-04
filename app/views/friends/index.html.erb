@@ -1,0 +1,9 @@
+<h1>Your Friends</h1>
+
+<hr/>
+
+<% @friends.each do |friend| %>
+  <div class='panel'>
+    <h3><%= link_to friend.full_name, friend_path(friend) %></h3>
+  </div>
+<% end %>

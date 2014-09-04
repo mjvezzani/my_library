@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :users
   resources :books
   resources :friends
+  resources :checked_out_books, only: [:index, :create]
 
 end

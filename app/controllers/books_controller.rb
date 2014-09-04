@@ -6,6 +6,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @cob = CheckedOutBook.new
   end
 
   def new
@@ -27,6 +28,10 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :isbn, :user_id, :checked_out)
+  end
+
+  def cob_params
+    params.require(:checked_out_book).permit(:friend_id, :book_id)
   end
 
 end
