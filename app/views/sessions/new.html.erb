@@ -1,4 +1,4 @@
-<div class='large-4 large-offset-4 columns'>
+<div class='large-6 columns'>
   <h2>Sign in</h2>
   <hr/>
 
@@ -15,9 +15,10 @@
       <%= submit_tag 'Take me to my library', class: 'button' %>
     </div>
   <% end %>
+</div>
 
-  <div class='panel clearfix'>
-    <h3><small>Not a member? Register for a free account!</small></h3>
-    <%= link_to 'Register Now', register_path, class: 'button right' %>
-  </div>
+<div id='register' class='large-4 large-offset-2 columns panel clearfix'>
+  <h2>Register</h2>
+  <h3><small>Not a member? Register for a free account!</small></h3>
+  <%= link_to 'Register Now', register_path, class: 'button right' %>
 </div>

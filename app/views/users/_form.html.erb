@@ -11,5 +11,9 @@
   <%= f.password_field :password_confirmation %>
   <hr/>
   <br/>
-  <%= f.submit 'Make my library!', class: 'button' %>
+  <% if obj == 'new' %>
+    <%= f.submit 'Make my library!', class: 'button' %>
+  <% else %>
+    <%= f.submit 'Update my credentials', class: 'button' %>
+  <% end %>
 <% end %>

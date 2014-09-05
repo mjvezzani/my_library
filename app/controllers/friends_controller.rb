@@ -1,7 +1,9 @@
 class FriendsController < ApplicationController
+
+  before_action :require_user
   
   def index
-    @friends = Friend.all
+    @friends = Friend.where(user_id: current_user.id)
   end
 
   def show

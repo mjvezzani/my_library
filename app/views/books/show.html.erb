@@ -7,11 +7,15 @@
 
 <div class='panel'>
   <%= form_for @book do |f| %>
-    <%= f.collection_select(:friend_id, Friend.all, :id, :full_name) %>
+    <%= f.collection_select(:friend_id, Friend.where(user_id: current_user.id), :id, :full_name) %>
     <br/>
-    <%= f.label :checked_out %>
+    <%= f.label :checked_out, "Checked Out?" %>
     <%= f.check_box :checked_out, {}, "true", "false" %>
     <br/>
-    <%= f.submit 'Lend out book', class: 'button' %>
+    <% if @book.checked_out? %>
+      <%= f.submit 'Check book in', class: 'button' %>
+    <% else %>
+      <%= f.submit 'Lend out book', class: 'button' %>
+    <% end %>
   <% end %>
 </div>
