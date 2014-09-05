@@ -16,6 +16,51 @@
 
  */
 
+ a {
+  color: #aaaaaa;
+  transition: color .2s, font-size .2s;
+ }
+
+ a:hover {
+  color: #777777;
+  font-size: 1.02em;
+ }
+
+ nav.top-bar {
+  margin-bottom: 1em;
+ }
+
  #register {
   margin-top:5em;
+ }
+
+ #checked_out_text {
+  background-color: yellow;
+  font-size: 1em;
+  color: #AAAAAA;
+  position: relative;
+  right: -4.5em;
+  top: -4.5em;
+ }
+
+ #checkout {
+  background-color: black;
+  padding: 1em;
+  margin-right: 1em;
+ }
+
+ #checkout form label {
+  color: white;
+ }
+
+ #checkout form input.button {
+  background-color: #AAAA00;
+ }
+
+ div.available {
+  background-color: #E93C20;
+ }
+
+ div.available a{
+  color: white;
  }

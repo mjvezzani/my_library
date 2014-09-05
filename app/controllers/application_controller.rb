@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
     self.checked_out == true
   end
 
+  def any_checked_out?
+    self.all.each do |obj|
+      obj.checked_out
+    end
+  end
+
   def access_denied
     flash[:alert] = 'You must be logged in to do that.'
     redirect_to login_path

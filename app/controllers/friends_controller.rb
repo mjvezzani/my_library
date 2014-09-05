@@ -7,6 +7,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @friend = Friend.where(user_id: current_user.id, id: params[:id]).first
   end
 
   def new

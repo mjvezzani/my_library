@@ -1,24 +1,38 @@
 <h1>Dashboard</h1>
+<hr/>
 
-<div class='large-8 columns'>
-  <h3>Lent Out Books</h3>
-  <% @lobs.each do |book| %>
-    <div class='panel'>
-      <h4><%= link_to book.title, book_path(book) %></h4>
-      <p><%= book.author %></p>
-      <%= link_to book_path(book) do %>
-        <span class='label radius warning'>This book is checked out to <%= book.friend.full_name %>.</span>
+<div class='large-12 columns'>
+  <div class='row'>
+    <div class='large-8 columns'>
+      <h3>Lent Out Books</h3>
+    </div>
+    <div class='large-4 columns'>
+      <h3>Samplings From Your Library</h3>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='large-8 columns'>
+      <% @lobs.each do |book| %>
+        <div class='panel'>
+          <h4><%= link_to book.title, book_path(book) %></h4>
+          <p><%= book.author %></p>
+          <%= link_to book_path(book) do %>
+            <span class='label radius alert'>This book is checked out to <%= book.friend.full_name %>.</span>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
 
-<div class='large-4 columns'>
-  <h3>Samplings From Your Library</h3>
-  <% @books.each do |book| %>
-    <div class='panel'>
-      <h3><%= link_to book.title, book_path(book) %></h3>
-      <p><%= book.author %></p>
+    <div class='large-4 columns'>
+      <% @books.each do |book| %>
+        <% if !book.checked_out? %>
+          <div class='panel available'>
+            <h3><%= link_to book.title, book_path(book) %></h3>
+            <p><%= book.author %></p>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

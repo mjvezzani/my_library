@@ -8,5 +8,17 @@
   <%= f.label :isbn %>
   <%= f.text_field :isbn %>
   <br/>
-  <%= f.submit 'Create book', class: 'button alert' %>
+  <%= f.label :categories %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <br/>
+  <% if obj == 'new' %>
+    <%= f.submit 'Create book', class: 'button alert' %>
+  <% else %>
+    <ul class='button-group round'>
+      <li><%= f.submit 'Update book', class: 'button alert' %></li>
+      <li><%= link_to 'Delete book', @book, method: :delete,
+                                     data: {confirm: 'Are you sure?'},
+                                     class: 'button alert' %></li>
+    </ul>
+  <% end %>
 <% end %>

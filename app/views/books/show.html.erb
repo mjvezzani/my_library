@@ -1,21 +1,32 @@
 <h2><%= @book.title %></h2>
 
-<div class='panel'>
-  <p>Author: <%= @book.author %></p>
-  <p>ISBN: <%= @book.isbn %></p>
-</div>
+<div class='panel large-12 columns'>
+  <div class='row'>
+    <div class='large-8 columns'>
+      <p>Author: <%= @book.author %></p>
+      <p>ISBN: <%= @book.isbn %></p>
+      <% if @book.categories.size > 0 %>
+        <p>Categories: <% @book.categories.each do |cat| %>
+          <%= link_to cat.name, category_path(cat) %>
+          <% end %>
+        </p>
+      <% end %>
+      <%= link_to 'Edit this book', edit_book_path(@book), class: 'button alert' %>
+    </div>
 
-<div class='panel'>
-  <%= form_for @book do |f| %>
-    <%= f.collection_select(:friend_id, Friend.where(user_id: current_user.id), :id, :full_name) %>
-    <br/>
-    <%= f.label :checked_out, "Checked Out?" %>
-    <%= f.check_box :checked_out, {}, "true", "false" %>
-    <br/>
-    <% if @book.checked_out? %>
-      <%= f.submit 'Check book in', class: 'button' %>
-    <% else %>
-      <%= f.submit 'Lend out book', class: 'button' %>
-    <% end %>
-  <% end %>
+    <div id='checkout' class='large-3 columns'>
+      <%= form_for @book do |f| %>
+        <%= f.collection_select(:friend_id, Friend.where(user_id: current_user.id), :id, :full_name ) %>
+        <br/>
+        <%= f.label :checked_out, "Checked Out?" %>
+        <%= f.check_box :checked_out, {}, "true", "false" %>
+        <br/>
+        <% if @book.checked_out? %>
+          <%= f.submit 'Check book in', class: 'button' %>
+        <% else %>
+          <%= f.submit 'Lend out book', class: 'button' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

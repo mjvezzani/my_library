@@ -1,0 +1,10 @@
+<%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <% if obj == 'new' %>
+    <%= f.submit 'Create Category', class: 'button alert' %>
+  <% else %>
+    <%= f.submit 'Update Category', class: 'button alert' %>
+  <% end %>
+<% end %>

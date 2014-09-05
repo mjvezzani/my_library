@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :books
   has_many :friends
+  has_many :categories
 
 end

@@ -1,0 +1,17 @@
+<h1><%= @friend.full_name %></h1>
+
+<hr/>
+
+<% if @friend.books.size == '0'%>
+  <h3><%= @friend.first_name %> has the following books checked out</h3>
+  <% @friend.books.each do |book| %>
+    <%= link_to book_path(book) do %>
+      <div class='large-4 columns panel'>
+        <p><%= book.title %></p>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <h3><%= @friend.first_name %> has no books checked out right now</h3>
+<% end %>
+

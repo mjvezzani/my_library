@@ -1,0 +1,7 @@
+<h1>Here are all your categories</h1>
+
+<hr/>
+
+<% @categories.each do |cat| %>
+  <h3><%= link_to cat.name, category_path(cat) %></h3>
+<% end %>

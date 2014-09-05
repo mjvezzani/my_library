@@ -8,7 +8,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.where(user_id: current_user.id, id: params[:id]).first
-    binding.pry
   end
 
   def new
@@ -28,28 +27,35 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.where(user_id: current_user.id, id: params[:id]).first
   end
 
   def update
-    @book = Book.find(params[:id])
+    @book = Book.where(user_id: current_user.id, id: params[:id]).first
 
     if @book.update(book_params)
       if @book.checked_out == false || nil
         @book.friend = nil
+        @book.save
       end
       flash[:success] = 'Lending status updated'
-      redirect_to dashboard_path
+      redirect_to book_path(@book)
     else
       flash[:error] = 'Something went wrong'
       redirect_to book_path(@book)
     end
   end
 
+  def destroy
+    book = Book.where(user_id: current_user.id, id: params[:id]).first
+    book.destroy
+    redirect_to books_path
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :user_id, :friend_id, :checked_out)
+    params.require(:book).permit(:title, :author, :isbn, :user_id, :friend_id, :checked_out, category_ids: [])
   end
 
 end

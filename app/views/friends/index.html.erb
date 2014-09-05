@@ -1,7 +1,10 @@
 <h1>All your friends</h1>
 
 <% @friends.each do |friend| %>
-  <div class='panel'>
-    <h3><%= friend.full_name %></h3>
+  <div class='panel clearfix'>
+    <h3><%= link_to friend.full_name, friend_path(friend) %></h3>
+    <% if friend.books %>
+      <p class='right'><%= friend.full_name %> has <%= friend.books.size %> book(s) checked out right now.</p>
+    <% end %>
   </div>
 <% end %>
