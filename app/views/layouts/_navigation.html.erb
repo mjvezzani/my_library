@@ -1,4 +1,4 @@
-<nav class='top-bar' data-topbar role='navigation'>
+<nav class='top-bar' data-topbar data-options='is_hover: false', role='navigation'>
   <ul class='title-area'>
     <li class='name'>
       <h1><%= link_to 'My Library', dashboard_path %></h1>
@@ -9,7 +9,23 @@
   <section class='top-bar-section'>
 
     <ul class='right'>
-      <li><%= link_to 'Add Book to Library', new_book_path %></li>
+      <li class='has-dropdown'>
+        <a href="#">Books</a>
+        <ul class='dropdown'>
+          <li><%= link_to 'Add Book to Library', new_book_path %></li>
+          <li><%= link_to 'View Library', books_path %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul class='right'>
+      <li class='has-dropdown'>
+        <a href="#">Friends</a>
+        <ul class='dropdown'>
+          <li><%= link_to 'Add Friend to Directory', new_friend_path %></li>
+          <li><%= link_to 'View Friends', friends_path %></li>
+        </ul>
+      </li>
     </ul>
 
     <ul class='left'>
