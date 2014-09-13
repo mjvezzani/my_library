@@ -1,4 +1,6 @@
 <h2>Add A Book To Your Library</h2>
+<hr/>
+<%= render 'shared/errors', obj: @book %>
 
 <div class='large-6 large-offset-3 columns panel'>
   <%= render 'form', obj: 'new' %>

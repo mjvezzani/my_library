@@ -1,3 +1,5 @@
 <h1>Edit <%= @book.title %></h1>
+<hr/>
+<%= render 'shared/errors', obj: @book %>
 
 <%= render 'form', obj: 'edit' %>

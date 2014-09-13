@@ -23,10 +23,14 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = 'Welcome to the book checkout app'
       session[:user_id] = @user.id
-      # <<--##$$ This redirect needs correcting $$##-->>
-      redirect_to dashboard_path
+
+      if session[:user_id] == @user.id
+        redirect_to dashboard_path
+      else
+        session[:user_id] = nil
+        redirect_to register_path
+      end
     else
-      flash[:error] = "I'm sorry. Something went wrong."
       render :new
     end
   end

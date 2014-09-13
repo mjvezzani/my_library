@@ -18,12 +18,11 @@
 
  a {
   color: #aaaaaa;
-  transition: color .2s, font-size .2s;
+  transition: color .2s;
  }
 
  a:hover {
   color: #777777;
-  font-size: 1.02em;
  }
 
  nav.top-bar {
@@ -54,7 +53,7 @@
  }
 
  #checkout form input.button {
-  background-color: #AAAA00;
+  background-color: #008CBA;
  }
 
  div.available {

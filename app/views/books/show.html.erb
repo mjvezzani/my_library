@@ -2,18 +2,56 @@
 
 <div class='panel large-12 columns'>
   <div class='row'>
+  <!-- Book Information -->
     <div class='large-8 columns'>
       <p>Author: <%= @book.author %></p>
       <p>ISBN: <%= @book.isbn %></p>
+      <% unless @book.synopsis == nil %>
+        <p>Synopsis: <%= @book.synopsis %></p>
+      <% end %>
+      <% unless @book.review == nil %>
+        <p>Review: <%= @book.review %></p>
+      <% end %>
       <% if @book.categories.size > 0 %>
         <p>Categories: <% @book.categories.each do |cat| %>
           <%= link_to cat.name, category_path(cat) %>
           <% end %>
         </p>
       <% end %>
-      <%= link_to 'Edit this book', edit_book_path(@book), class: 'button alert' %>
-    </div>
+      <!-- Action Buttons -->
+      <ul class='button-group radius'>
+        <%= link_to 'Edit this book', "#", class: 'button alert', id: 'edit-link' %>
+        <%= link_to "Add A Review", "#", class: 'button alert', id: 'review_link' %>
+        <%= link_to 'Add A Plot/Synopsis', "#", class: 'button alert', id: 'synopsis-link' %>
+      </ul>
+      <br/>
+      <!-- Edit Book -->
+      <div id='edit-book'>
+        <%= render 'form', obj: 'edit' %>
+      </div>
 
+      <!-- Write Review -->
+      <div id='review'>
+        <%= form_for @book do |f| %>
+          <%= f.label :review, "Write a review for <strong><em>#{@book.title}</em></strong>".html_safe, id: 'review-label' %>
+          <%= f.text_area :review, id: 'review-writing', rows: '15' %>
+          <br/>
+          <%= f.submit 'Create Review', class: 'button' %> 
+        <% end %>
+      </div>
+
+      <!-- Write Synopsis -->
+      <div id='synopsis'>
+        <%= form_for @book do |f| %>
+          <%= f.label :synopsis, "Write a synopsis for <strong><em>#{@book.title}</em></strong>".html_safe, id: 'synopsis-label' %>
+          <%= f.text_area :synopsis, id: 'synopsis-writing', rows: '15' %>
+          <br/>
+          <%= f.submit 'Create Synopsis', class: 'button' %>
+        <% end %>
+      </div>
+    </div>
+    
+    <!-- Check Out Book -->
     <div id='checkout' class='large-3 columns'>
       <%= form_for @book do |f| %>
         <%= f.collection_select(:friend_id, Friend.where(user_id: current_user.id), :id, :full_name ) %>
@@ -30,3 +68,4 @@
     </div>
   </div>
 </div>
+

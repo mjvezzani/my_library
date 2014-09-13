@@ -1,15 +1,23 @@
-<%= form_for @friend do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-  <br/>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-  <br/>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <br/>
-  <%= f.label :phone %>
-  <%= f.text_field :phone %>
-  <br/>
-  <%= f.submit 'Create Friend', class: 'button' %>
-<% end %>
+<div class='row'>
+  <div class='large-4 large-offset-4 columns'>
+    <%= form_for @friend do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+      <br/>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+      <br/>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <br/>
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+      <br/>
+      <% if obj == 'new' %>
+        <%= f.submit 'Create Friend', class: 'button' %>
+      <% else %>
+        <%= f.submit 'Update Friend', class: 'button' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

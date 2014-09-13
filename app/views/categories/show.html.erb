@@ -1,7 +1,20 @@
 <h1>Books related to <%= @category.name %></h1>
 
 <% @category.books.each do |book| %>
-  <div class='panel'>
-    <h3><%= link_to book.title, book_path(book) %></h3>
-  </div>
+  <% if !book.checked_out? %>
+    <div class='panel available'>
+      <h3><%= link_to book.title, book_path(book) %></h3>
+    </div>
+  <% else %>
+    <div class='panel'>
+      <div>
+        <h4><%= link_to book.title, book_path(book) %></h4>
+        <p><%= book.author %></p>
+        <% if book.checked_out? %>
+          <p>This book is checked out to <%= link_to book.friend.full_name, friend_path(book.friend) %></p>
+        <% end %>
+      </div>
+      <p class='right' id='checked_out_text'>Checked Out</p>
+    </div>
+  <% end %>
 <% end %>

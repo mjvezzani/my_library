@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
 
+  before_action :set_category, only: [:show, :edit, :update]
+
   def index
     @categories = Category.where(user_id: current_user.id)
   end
 
   def show
-    @category = Category.where(user_id: current_user.id, id: params[:id]).first
   end
 
   def new
@@ -25,12 +26,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.where(user_id: current_user.id, id: params[:id]).first
   end
 
   def update
-    @category = Category.where(user_id: current_user.id, id: params[:id]).first
-
     if @category.update(category_params)
       flash[:success] = 'Category successfully updated'
       redirect_to categories_path
@@ -39,13 +37,13 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-
-  end
-
   private
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_category
+    @category = Category.where(user_id: current_user.id, slug: params[:id]).first
   end
 end

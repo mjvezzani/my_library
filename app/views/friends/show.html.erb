@@ -1,8 +1,14 @@
 <h1><%= @friend.full_name %></h1>
-
+<%= link_to "Edit #{@friend.full_name}'s profile", edit_friend_path(@friend), class: 'button right' %>
+<% if @friend.books.size > 0 %>
+  <p>Phone: <%= @friend.phone %></p>
+  <p>Address: <%= @friend.address %></p>
+<% end %>
 <hr/>
 
-<% if @friend.books.size == '0'%>
+<% if @friend.books.size == 0 %>
+  <h3><%= @friend.first_name %> has no books checked out right now</h3>
+<% else %>
   <h3><%= @friend.first_name %> has the following books checked out</h3>
   <% @friend.books.each do |book| %>
     <%= link_to book_path(book) do %>
@@ -11,7 +17,5 @@
       </div>
     <% end %>
   <% end %>
-<% else %>
-  <h3><%= @friend.first_name %> has no books checked out right now</h3>
 <% end %>
 

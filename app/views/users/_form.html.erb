@@ -1,19 +1,23 @@
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <hr/>
-  <br/>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <hr/>
-  <br/>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <hr/>
-  <br/>
-  <% if obj == 'new' %>
-    <%= f.submit 'Make my library!', class: 'button' %>
-  <% else %>
-    <%= f.submit 'Update my credentials', class: 'button' %>
-  <% end %>
-<% end %>
+<div class='row'>
+  <div class='large-4 large-offset-4 columns'>
+    <%= form_for @user do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      <hr/>
+      <br/>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <hr/>
+      <br/>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+      <hr/>
+      <br/>
+      <% if obj == 'new' %>
+        <%= f.submit 'Make my library!', class: 'button' %>
+      <% else %>
+        <%= f.submit 'Update my credentials', class: 'button' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
