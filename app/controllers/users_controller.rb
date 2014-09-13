@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = 'Welcome to the book checkout app'
+      flash[:success] = 'Welcome to the book checkout app. To get started, add some books, friends, and categories, and then browse around.'
       session[:user_id] = @user.id
 
       if session[:user_id] == @user.id
