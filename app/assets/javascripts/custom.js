@@ -5,6 +5,7 @@ $(document).ready(function() {
   $("#synopsis").hide();
   $("#review-label").hide();
   $("#synopsis-label").hide();
+  
   // Display Edit Box
   $("#edit-link").click(function(){
     $("#synopsis").slideUp("slow");
@@ -13,24 +14,22 @@ $(document).ready(function() {
     $("#review-label").fadeOut("slow");
     $("#edit-book").slideToggle("slow");
   });
+
   // Display Review Box
   $("#review_link").click(function() {
-    $("#synopsis").slideUp(function(){
-      $("#review").slideToggle("slow");
-      $("#synopsis-label").fadeOut("slow", function(){
-        $("#review-label").fadeToggle("slow");
-      });
-    });
-    $("#edit-book").slideUp();
+    $("#synopsis").slideUp("slow");
+    $("#synopsis-label").fadeOut("slow");
+    $("#edit-book").slideUp("slow");
+    $("#review").slideToggle("slow");
+    $("#review-label").fadeToggle("slow");
   });
+
   // Display Synopsis Box
   $("#synopsis-link").click(function() {
-    $("#review").slideUp(function(){
-      $("#synopsis").slideToggle("slow"); 
-      $("#review-label").fadeOut("slow", function(){
-        $("#synopsis-label").fadeToggle("slow");
-      });
-    });
-    $("#edit-book").slideUp();
+    $("#review").slideUp("slow");
+    $("#review-label").fadeOut("slow");
+    $("#edit-book").slideUp("slow");
+    $("#synopsis").slideToggle("slow");
+    $("#synopsis-label").fadeToggle("slow");
   });
 });

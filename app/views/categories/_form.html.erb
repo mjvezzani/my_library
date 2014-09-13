@@ -1,10 +1,14 @@
-<%= form_for @category do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br/>
-  <% if obj == 'new' %>
-    <%= f.submit 'Create Category', class: 'button alert' %>
-  <% else %>
-    <%= f.submit 'Update Category', class: 'button alert' %>
-  <% end %>
-<% end %>
+<div class='row'>
+  <div class='large-4 large-offset-4 columns'>
+    <%= form_for @category do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <br/>
+      <% if obj == 'new' %>
+        <%= f.submit 'Create Category', class: 'button alert' %>
+      <% else %>
+        <%= f.submit 'Update Category', class: 'button alert' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

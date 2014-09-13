@@ -63,3 +63,15 @@
  div.available a{
   color: white;
  }
+
+ #edit-book {
+  display: none;
+ }
+
+ #review {
+  display: none;
+ }
+
+ #synopsis {
+  display: none;
+ }
